@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: linear-gradient(180deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);
+  min-height: 100vh;
+}
+
+.card-glow {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.3);
+}
+
+.vote-bar {
+  transition: width 0.5s ease;
+}
