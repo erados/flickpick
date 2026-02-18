@@ -8,15 +8,28 @@ datasource db {
 }
 
 model Movie {
-  id        String      @id @default(cuid())
-  title     String
-  titleEn   String?     @map("title_en")
-  imageUrl  String?     @map("image_url")
-  addedBy   String      @map("added_by")
-  createdAt DateTime    @default(now()) @map("created_at")
-  votes     MovieVote[]
+  id          String       @id @default(cuid())
+  title       String
+  titleEn     String?      @map("title_en")
+  description String?
+  imageUrl    String?      @map("image_url")
+  addedBy     String       @map("added_by")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  votes       MovieVote[]
+  nowPlaying  NowPlaying[]
 
   @@map("fp_movies")
+}
+
+model NowPlaying {
+  id        String   @id @default(cuid())
+  movieId   String   @map("movie_id")
+  startedBy String   @map("started_by")
+  viewers   String[] @default([])
+  startedAt DateTime @default(now()) @map("started_at")
+  movie     Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+
+  @@map("fp_now_playing")
 }
 
 model MovieVote {

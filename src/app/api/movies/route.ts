@@ -10,12 +10,12 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const { title, titleEn, imageUrl, addedBy } = await req.json()
+  const { title, titleEn, imageUrl, addedBy, description } = await req.json()
   if (!title || !addedBy) {
     return NextResponse.json({ error: 'title and addedBy required' }, { status: 400 })
   }
   const movie = await prisma.movie.create({
-    data: { title, titleEn, imageUrl, addedBy },
+    data: { title, titleEn, imageUrl, addedBy, description: description || null },
   })
   return NextResponse.json(movie)
 }

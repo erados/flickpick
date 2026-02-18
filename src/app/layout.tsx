@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'FlickPick 🎬 영화의 밤',
-  description: 'Vote for movie night!',
+  title: 'The 163 🎬 영화의 밤',
+  description: 'The 163 — 163 Dunedin St Movie Night',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
